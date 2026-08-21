@@ -2,365 +2,284 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>강민준 · KANG MINJUNE — AI Film Director / VFX Compositor</title>
-<meta name="description" content="AI 영상 연출 · VFX 합성 · 편집. Veo · Kling · Nano Banana Pro 기반 브랜드 필름, 내러티브 필름, 시리즈 콘텐츠 포트폴리오.">
-<meta property="og:title" content="강민준 · KANG MINJUNE — AI Film Director / VFX Compositor">
-<meta property="og:description" content="Veo · Kling · Nano Banana Pro 기반 상업 영상 9편.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MINJUNE. — 강민준 필름 포트폴리오</title>
+<meta name="description" content="강민준 — Film Director · Editor · AI/VFX. 극영화·다큐멘터리·뮤직비디오·AI 프로덕션 19편.">
+<meta property="og:title" content="MINJUNE. — 강민준 필름 포트폴리오">
+<meta property="og:description" content="극영화 · 다큐 · 뮤직비디오 · AI 프로덕션 19편.">
 <meta property="og:image" content="stills/jehovah.jpg">
-<meta property="og:type" content="website">
+<meta name="theme-color" content="#08090B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; }
-  html, body { margin:0; padding:0; background:#08090B; color:#E6E8EA; font-family:'IBM Plex Sans KR',sans-serif; }
-  a { color:#F5323C; text-decoration:none; }
-  a:hover { color:#F5323C; }
-  button { font-family:inherit; }
-  ::selection { background:rgba(224,20,31,.95); color:#fff; }
-  .mono { font-family:'IBM Plex Mono',monospace; }
+  *, *::before, *::after { box-sizing:border-box; }
+  html, body { margin:0; padding:0; background:#000; }
+  body { font-family:'IBM Plex Sans KR',sans-serif; color:#E6E8EA; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:#E0141F; color:#fff; }
+  .hsc { display:flex; gap:10px; overflow-x:auto; padding:0 22px 2px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .hsc::-webkit-scrollbar { display:none; }
 
-  .bar { display:flex; justify-content:space-between; align-items:center; gap:10px 24px; padding:16px 40px;
-    border-bottom:1px solid rgba(230,232,234,.12); font-family:'IBM Plex Mono',monospace; font-size:11px;
-    letter-spacing:.12em; line-height:1.5; flex-wrap:wrap; position:sticky; top:0; background:rgba(8,9,11,.92);
-    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); z-index:20; }
-  .bar .l, .bar .r { display:flex; gap:6px 20px; align-items:baseline; flex-wrap:wrap; }
-  .bar .r { color:#8E9398; align-items:center; }
-  .name { font-family:'IBM Plex Sans KR',sans-serif; font-size:17px; font-weight:600; letter-spacing:-.01em; color:#E6E8EA; }
+  #app { max-width:520px; margin:0 auto; min-height:100vh; min-height:100dvh; background:#08090B;
+    box-shadow:0 0 0 1px #1c1c20; position:relative; }
 
-  .stage { position:relative; background:#000; overflow:hidden; border-bottom:1px solid rgba(230,232,234,.12); }
-  .view { position:relative; width:100%; aspect-ratio:16/8; overflow:hidden; }
-  .track { position:absolute; inset:0; display:flex; width:100%; transition:transform .62s cubic-bezier(.22,1,.36,1); }
-  .slide { position:relative; flex:0 0 100%; height:100%; overflow:hidden; background:#000; }
-  .slide img { width:100%; height:100%; object-fit:cover; display:block; }
-  .scrim { position:absolute; inset:0; background:linear-gradient(to right,rgba(8,9,11,.92) 0%,rgba(8,9,11,.42) 48%,rgba(8,9,11,.12) 100%); }
+  .brand { display:flex; justify-content:space-between; align-items:center; padding:18px 22px 12px;
+    position:sticky; top:0; z-index:30; background:linear-gradient(#08090B 55%,rgba(8,9,11,.82));
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+  .brand .logo { font-family:'IBM Plex Mono',monospace; font-size:19px; font-weight:600; letter-spacing:.02em; color:#fff; }
+  .brand .logo b { color:#E0141F; }
 
-  .caption { position:absolute; left:0; top:0; bottom:0; width:600px; max-width:58%; padding:48px 44px;
-    display:flex; flex-direction:column; justify-content:flex-end; gap:18px; pointer-events:none; z-index:2; }
-  .caption .kicker { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.18em; color:#F5323C; }
-  .caption h1 { margin:0; font-size:46px; line-height:1.1; font-weight:600; letter-spacing:-.025em; text-wrap:pretty; }
-  .caption .sub { font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.12em; color:#9CA1A6; }
-  .caption .line { font-size:16px; line-height:1.7; color:#C3C8CC; font-weight:300; text-wrap:pretty; }
-  .tools { display:flex; gap:6px; flex-wrap:wrap; margin-top:4px; }
-  .tools span { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; color:#C3C8CC;
-    border:1px solid rgba(230,232,234,.28); padding:4px 8px; }
-  .tools span.m { color:#fff; background:rgba(224,20,31,.95); border-color:rgba(224,20,31,.95); font-weight:500; }
-  .play { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.14em; color:#fff;
-    background:rgba(224,20,31,.95); padding:12px 22px; width:fit-content; margin-top:10px; pointer-events:auto; transition:background .2s; }
-  .play:hover { background:#F5323C; color:#fff; }
+  .hero { position:relative; margin:0 22px; border-radius:14px; overflow:hidden; aspect-ratio:4/5; background:#12161a; cursor:pointer; }
+  .hero .bg { position:absolute; inset:0; background-size:cover; }
+  .hero .scrim { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,9,11,.94) 4%,rgba(8,9,11,.15) 46%,rgba(8,9,11,.35)); }
+  .hero .mark { position:absolute; left:0; right:0; top:26px; display:flex; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.34em; color:rgba(255,255,255,.72); }
+  .hero .cap { position:absolute; left:0; right:0; bottom:0; padding:22px 18px; display:flex; flex-direction:column; align-items:center; gap:13px; }
+  .hero h1 { margin:0; font-size:33px; line-height:1.02; font-weight:700; letter-spacing:-.03em; text-align:center; text-wrap:balance; }
+  .hero .meta { display:flex; gap:8px; align-items:center; font-size:12.5px; color:#C3C8CC; font-weight:300; }
+  .hero .play { display:flex; align-items:center; justify-content:center; gap:9px; width:100%;
+    background:#fff; color:#08090B; font-weight:700; font-size:17px; padding:15px 0; border-radius:7px; }
 
-  .nav { position:absolute; right:28px; bottom:28px; display:flex; gap:8px; z-index:3; }
-  .nav button { width:44px; height:44px; border:1px solid rgba(230,232,234,.28); background:rgba(8,9,11,.55);
-    color:#E6E8EA; font-family:'IBM Plex Mono',monospace; font-size:15px; cursor:pointer;
-    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); transition:.2s; }
-  .nav button:hover { background:rgba(224,20,31,.95); color:#fff; border-color:rgba(224,20,31,.95); }
+  .rows { display:flex; flex-direction:column; gap:24px; padding:26px 0 110px; }
+  .rowt { font-size:16px; font-weight:600; letter-spacing:-.01em; padding:0 22px; }
+  .card { position:relative; flex:0 0 auto; display:flex; align-items:flex-end; cursor:pointer; }
+  .poster { position:relative; width:116px; aspect-ratio:2/3; border-radius:8px; overflow:hidden;
+    background-size:cover; background-color:#12161a; }
+  .card.rk { width:150px; } .card.rk .poster { width:104px; margin-left:auto; }
+  .card.rk2 { width:176px; }
+  .rank { position:absolute; left:-6px; bottom:-14px; z-index:1; font-size:104px; font-weight:700; line-height:.8;
+    color:#E0141F; -webkit-text-stroke:1px #FF3B44; letter-spacing:-.06em; text-shadow:0 4px 18px rgba(224,20,31,.45); }
+  .card.rk2 .rank { font-size:78px; letter-spacing:-.1em; }
+  .tband { position:absolute; left:0; right:0; bottom:0; padding:28px 9px 9px;
+    background:linear-gradient(to top,rgba(8,9,11,.94) 10%,rgba(8,9,11,0)); }
+  .tband span { display:block; font-size:13px; font-weight:700; line-height:1.12; letter-spacing:-.02em; text-wrap:balance; color:#fff; }
 
-  .tabs { display:grid; grid-template-columns:repeat(9,1fr); gap:1px; background:rgba(230,232,234,.12);
-    border-top:1px solid rgba(230,232,234,.12); }
-  .tab { background:#08090B; border:none; border-top:2px solid transparent; padding:12px 14px; cursor:pointer;
-    opacity:.55; transition:opacity .25s, background .25s; display:flex; align-items:center; }
-  .tab:hover { opacity:1; }
-  .tab.on { background:#12161A; border-top-color:rgba(224,20,31,.95); opacity:1; }
-  .tab .in { display:flex; align-items:center; gap:10px; width:100%; }
-  .tab .th { flex:0 0 56px; aspect-ratio:16/10; background:#111417; overflow:hidden; }
-  .tab .th img { width:100%; height:100%; object-fit:cover; display:block; }
-  .tab .tx { display:flex; flex-direction:column; gap:3px; text-align:left; min-width:0; }
-  .tab .no { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.12em; color:#F5323C; }
-  .tab .ti { font-size:12.5px; font-weight:500; color:#DDE1E4; line-height:1.3; text-wrap:pretty; }
-
-  .body { display:grid; grid-template-columns:1fr 380px; }
-  .main { padding:44px 40px 56px; border-right:1px solid rgba(230,232,234,.12); }
-  .secthead { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:26px; }
-  .lbl { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.16em; color:#5D6267; }
-  .code { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.12em; color:#F5323C; }
-
-  .flow { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:rgba(230,232,234,.12);
-    border:1px solid rgba(230,232,234,.12); }
-  .step { background:#08090B; padding:20px 16px; display:flex; flex-direction:column; gap:10px; min-height:172px; }
-  .step .n { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.14em; color:#F5323C; }
-  .step .k { font-size:15px; font-weight:500; }
-  .step .e { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:#5D6267; }
-  .step .d { font-size:12.5px; line-height:1.62; color:#8E9398; font-weight:300; margin-top:auto; text-wrap:pretty; }
-
-  .note { margin-top:32px; padding:26px 28px; border:1px solid rgba(230,232,234,.12); background:#0B0D10; }
-  .note p { margin:0; font-size:16px; line-height:1.78; color:#C3C8CC; font-weight:300; text-wrap:pretty; }
-
-  .cols { display:grid; grid-template-columns:1fr 1fr; gap:44px; margin-top:40px; }
-  .kv { display:grid; grid-template-columns:96px 1fr; gap:14px; padding:10px 0; border-top:1px solid rgba(230,232,234,.1); }
-  .kv .k { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; color:#5D6267; padding-top:3px; }
+  .dhero { position:relative; aspect-ratio:1/1; background:#12161a; overflow:hidden; }
+  .dhero .bg { position:absolute; inset:0; background-size:cover; }
+  .dhero .scrim { position:absolute; inset:0; background:linear-gradient(to top,#08090B 3%,rgba(8,9,11,.1) 55%,rgba(8,9,11,.5)); }
+  .navbtn { position:absolute; top:14px; display:flex; align-items:center; gap:6px; height:36px; border-radius:999px;
+    background:rgba(8,9,11,.62); font-size:14px; font-weight:600; backdrop-filter:blur(6px); cursor:pointer; border:none; color:#fff; }
+  .back { left:14px; padding:0 14px 0 11px; } .close { right:14px; width:36px; justify-content:center; padding:0; font-size:17px; }
+  .dbody { padding:20px 22px 110px; display:flex; flex-direction:column; gap:18px; }
+  .dbody h1 { margin:0; font-size:26px; font-weight:700; letter-spacing:-.03em; }
+  .dmeta { display:flex; gap:8px; align-items:center; font-size:13px; color:#9CA1A6; font-weight:300; flex-wrap:wrap; }
+  .badges { display:flex; gap:7px; flex-wrap:wrap; }
+  .bd { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; padding:4px 9px; border-radius:3px; }
+  .bd.m { color:#fff; background:#E0141F; font-weight:600; }
+  .bd.f { color:#C3C8CC; border:1px solid rgba(230,232,234,.28); }
+  .dplay { display:flex; align-items:center; justify-content:center; gap:8px; background:#E0141F; color:#fff;
+    font-weight:600; font-size:16px; padding:13px 0; border-radius:6px; }
+  .dplay:active { background:#B2231C; }
+  .logline { margin:0; font-size:15px; line-height:1.7; color:#DDE1E4; font-weight:300; text-wrap:pretty; }
+  .creds { border-top:1px solid rgba(230,232,234,.12); margin-top:2px; }
+  .kv { display:grid; grid-template-columns:74px 1fr; gap:14px; padding:11px 0; border-bottom:1px solid rgba(230,232,234,.1); }
+  .kv .k { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#5D6267; padding-top:3px; }
   .kv .v { font-size:14px; color:#C3C8CC; font-weight:300; }
-  .st { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:10px 0;
-    border-top:1px solid rgba(230,232,234,.1); }
-  .st .n { font-size:14px; font-weight:500; }
-  .st .r { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5D6267; text-align:right; }
 
-  .side { padding:44px 0 32px; display:flex; flex-direction:column; }
-  .row { display:flex; align-items:center; gap:14px; width:100%; padding:12px 28px;
-    border:none; border-top:1px solid rgba(230,232,234,.09); border-left:2px solid transparent;
-    background:transparent; cursor:pointer; transition:background .25s; }
-  .row:hover { background:rgba(230,232,234,.05); }
-  .row.on { border-left-color:rgba(224,20,31,.95); background:rgba(224,20,31,.12); }
-  a.row, a.row:hover { color:inherit; text-decoration:none; }
-  .row .th { flex:0 0 84px; aspect-ratio:16/10; background:#111417; overflow:hidden; }
-  .row .th img { width:100%; height:100%; object-fit:cover; display:block; }
-  .row .tx { display:flex; flex-direction:column; gap:4px; text-align:left; min-width:0; }
-  .row .ti { font-size:14.5px; font-weight:500; letter-spacing:-.01em; color:#DDE1E4; line-height:1.35; text-wrap:pretty; }
-  .row .me { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#5D6267; }
-  .row .goto { margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#5D6267; transition:color .25s; }
-  .row:hover .goto { color:#F5323C; }
-  .row:hover .ti { color:#fff; }
-
-  .cta { margin-top:auto; padding:28px 28px 0; }  .cta a.call { display:flex; flex-direction:column; align-items:center; gap:5px; background:rgba(224,20,31,.95); color:#fff;
-    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em; text-align:center; padding:14px 0; transition:background .2s; }
-  .cta a.call:hover { background:#F5323C; color:#fff; }
-  .cta a.call .num { font-size:13px; letter-spacing:.06em; font-weight:500; }
-  .cta a.mail { display:block; text-align:center; margin-top:10px; font-family:'IBM Plex Mono',monospace;
-    font-size:11px; letter-spacing:.08em; color:#5D6267; }
-  .cta a.mail:hover { color:#F5323C; }
-
-  footer { border-top:1px solid rgba(230,232,234,.12); padding:20px 40px; display:flex; justify-content:space-between;
-    gap:20px; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.12em; color:#5D6267; }
-
-  @media (max-width: 1100px) {
-    .body { grid-template-columns:1fr; }
-    .side { order:1; padding-top:36px; border-bottom:1px solid rgba(230,232,234,.12); padding-bottom:36px; }
-    .main { order:2; border-right:none; }
-    .flow { grid-template-columns:repeat(2,1fr); }
-    .step:last-child { grid-column:span 2; }
-    .tabs { display:none; }
-  }
-  @media (max-width: 760px) {
-    .bar { padding:14px 20px; gap:12px; }
-    .view { aspect-ratio:4/5; }
-    .caption { width:100%; max-width:100%; padding:28px 22px; }
-    .caption h1 { font-size:30px; }
-    .scrim { background:linear-gradient(to top,rgba(8,9,11,.94) 0%,rgba(8,9,11,.45) 55%,rgba(8,9,11,.15) 100%); }
-    .nav { right:16px; bottom:auto; top:16px; }
-    .main { padding:32px 20px 40px; }
-    .flow { grid-template-columns:1fr; }
-    .step:last-child { grid-column:auto; }
-    .step { min-height:0; }
-    .cols { grid-template-columns:1fr; gap:32px; }
-    .row { padding:12px 20px; }
-    .cta { padding:24px 20px 0; }
-    footer { padding:18px 20px; }
-  }
+  .cta { position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:520px; z-index:40;
+    padding:12px 16px calc(14px + env(safe-area-inset-bottom)); background:linear-gradient(rgba(8,9,11,0),#08090B 34%); }
+  .cta .in { display:flex; align-items:center; gap:14px; background:#101216; border:1px solid rgba(230,232,234,.14);
+    border-radius:14px; padding:12px 12px 12px 16px; }
+  .cta .nm { flex:1; display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .cta .nm b { font-size:16px; font-weight:600; letter-spacing:-.01em; color:#fff; }
+  .cta .nm span { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.08em; color:#8A8880; }
+  .cta .call { display:flex; align-items:center; justify-content:center; width:48px; height:48px;
+    background:#34C759; color:#fff; font-size:22px; border-radius:50%; }
+  .cta .call:active { background:#2AA84A; }
 </style>
 </head>
 <body>
-
-<div class="bar">
-  <div class="l">
-    <span class="name">강민준</span>
-    <span style="color:#F5323C">KANG MINJUNE</span>
-    <span style="color:#5D6267">AI FILM DIRECTOR · VFX COMPOSITOR</span>
+<div id="app">
+  <div id="home">
+    <div class="brand"><span class="logo">MINJUNE<b>.</b></span></div>
+    <div class="hero" id="hero"></div>
+    <div class="rows" id="rows"></div>
   </div>
-  <div class="r">
-    <span>SEOUL, KR</span>
-    <a href="mailto:idrkdalswns@gmail.com">idrkdalswns@gmail.com</a>
-    <a href="tel:+821023115166" style="color:#8E9398">010 2311 5166</a>
-  </div>
-</div>
-
-<div class="stage">
-  <div class="view">
-    <div class="track" id="track"></div>
-    <div class="caption">
-      <span class="kicker" id="c-kicker"></span>
-      <h1 id="c-title"></h1>
-      <span class="sub" id="c-sub"></span>
-      <span class="line" id="c-line"></span>
-      <div class="tools" id="c-tools"></div>
-      <a class="play" id="c-play" target="_blank" rel="noopener">▶ 재생하기</a>
-    </div>
-    <div class="nav">
-      <button type="button" id="prev" aria-label="이전 작품">←</button>
-      <button type="button" id="next" aria-label="다음 작품">→</button>
-    </div>
-  </div>
-  <div class="tabs" id="tabs"></div>
-</div>
-
-<div class="body">
-  <div class="main">
-    <div class="secthead">
-      <span class="lbl">WORKFLOW — 이 작업의 진행 순서</span>
-      <span class="code" id="w-code"></span>
-    </div>
-    <div class="flow" id="flow"></div>
-
-    <div class="note"><p id="w-note"></p></div>
-
-    <div class="cols">
-      <div>
-        <span class="lbl" style="display:block;margin-bottom:16px">PROFILE</span>
-        <div id="bio"></div>
-      </div>
-      <div>
-        <span class="lbl" style="display:block;margin-bottom:16px">STACK</span>
-        <div id="stack"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="side">
-    <span class="lbl" style="padding:0 28px 20px">INDEX / 09</span>
-    <div id="rows"></div>
-    <div class="cta">
-      <a class="call" href="tel:+821023115166">
-        <span>작업 문의하기</span>
-        <span class="num">010 2311 5166</span>
-      </a>
-      <a class="mail" href="mailto:idrkdalswns@gmail.com">메일로 보내기 →</a>
+  <div id="detail" style="display:none"></div>
+  <div class="cta">
+    <div class="in">
+      <div class="nm"><b>강민준</b><span>FILM DIRECTOR · EDITOR</span></div>
+      <a class="call" href="tel:+821023115166" aria-label="전화 연결">✆</a>
     </div>
   </div>
 </div>
-
-<footer>
-  <span>강민준 · KANG MINJUNE · 010 2311 5166</span>
-  <span>© 2026 ALL RIGHTS RESERVED</span>
-</footer>
 
 <script>
-const DATA = [
-  { ko:"여호와가 싸우리라", en:"THE LORD WILL FIGHT — NARRATIVE FILM", type:"내러티브 본편",
-    method:"100% AI 생성", tools:["Veo","Kling","Nano Banana Pro"], ratio:"16:9", id:"n9LnXow7cG8",
-    still:"stills/jehovah.jpg", pos:"center 42%",
-    line:"촬영 없이 전 컷을 생성으로 만든 성경 서사 본편.",
-    note:"실사 촬영이 한 컷도 들어가지 않은 본편입니다. 동일 인물이 수십 컷에 걸쳐 등장하는 구조라, 스타트 프레임 단계에서 얼굴·의상·조명 기준을 확정하고 모든 컷에 같은 레퍼런스를 물려 인물 일관성을 유지했습니다. 전장 규모는 컷 크기와 편집 리듬으로 만들었습니다." },
-  { ko:"JINJU — 남강유등축제 시티 필름", en:"JINJU CITY — LANTERN FESTIVAL FILM", type:"도시 브랜딩",
-    method:"100% AI 생성", tools:["Veo 3.1"], ratio:"16:9", id:"GCvAS_3MHHA",
-    still:"stills/jinju_b.jpg", pos:"center 38%",
-    line:"남강 유등의 불빛으로 진주의 밤을 그린 도시 홍보 필름.",
-    note:"Veo 3.1 단일 모델로 완성한 도시 브랜딩 필름입니다. 유등의 점광원 수백 개가 만드는 보케를 인물 클로즈업 뒤에 층으로 세우는 것이 핵심이라, 인물·등불·수면 반사의 심도 관계를 프롬프트 단계에서 고정하고 컷마다 같은 광원 배치를 유지했습니다. 한복의 질감과 얼굴 일관성을 야간 역광 조건에서 지켜낸 작업입니다." },
-  { ko:"진주성 — 진주대첩", en:"JINJU FORTRESS — BATTLE OF JINJU", type:"히스토리컬 시퀀스",
-    method:"100% AI 생성", tools:["Seedance 2.5"], ratio:"16:9", id:"HO_PU2CEUsE",
-    still:"stills/jinju_c.jpg", pos:"center 45%",
-    line:"불화살이 쏟아지는 진주성 야간 공성전을 재현한 역사 시퀀스.",
-    note:"Seedance 2.5 단일 모델로 만든 진주대첩 재현 시퀀스입니다. 야간 공성전은 화염이 유일한 광원이라 컷마다 불빛의 색온도와 감쇠를 통일하는 것이 관건이었습니다. 쏟아지는 불화살의 궤적이 컷을 넘어 이어져 보이도록 낙하 방향과 속도를 맞춰 생성하고, 성벽·갑주·연기의 질감을 실사 톤으로 유지했습니다." },
-  { ko:"SWITCH Ep.07 — Octagon", en:"SWITCH EP.07 OCTAGON — SERIES", type:"시리즈",
-    method:"100% AI 생성", tools:["Veo","Kling","Nano Banana Pro"], ratio:"16:9", id:"93RVjL9U8dg",
-    still:"https://i.ytimg.com/vi/93RVjL9U8dg/hq720.jpg", pos:"center 38%",
-    line:"옥타곤과 관중, 조명까지 전부 생성으로 세운 중계 톤 에피소드.",
-    note:"실촬 푸티지를 한 프레임도 쓰지 않고 중계 화면의 질감을 재현하는 것이 과제였습니다. 스트로브 조명의 방향과 감쇠, 망원 렌즈의 압축감을 스타트 프레임에서 먼저 잡고, 관중석 노이즈와 그레인을 컷 전체에 동일한 값으로 얹어 실촬처럼 읽히게 했습니다." },
-  { ko:"SWITCH Ep.20 — Rough Cut", en:"SWITCH EP.20 — CHROMA BUILD / ROUGH CUT", type:"그린스크린 · VFX",
-    method:"실촬 + AI 합성", tools:["크로마키","SwitchX 합성","Veo","Kling"], ratio:"16:9", id:"eU_4mRKVUd8",
-    still:"stills/switch20.jpg", pos:"center 40%",
-    line:"시리즈 중 유일하게 실촬 소스를 키잉해 생성 배경과 합성한 편.",
-    note:"그린스크린으로 찍은 인물 소스를 키잉하고, 관제실 배경과 모니터 월은 생성으로 만들어 붙인 하이브리드 작업입니다. 실사 소스의 렌즈 왜곡과 생성 배경의 원근을 맞추고, 인물 외곽의 그린 스필을 제거하면서 화염 반사광을 다시 얹는 데 대부분의 시간을 썼습니다." },
-  { ko:"Octagon II — Fight Sequence", en:"OCTAGON II — FIGHT SEQUENCE", type:"시리즈",
-    method:"100% AI 생성", tools:["Veo","Kling"], ratio:"16:9", id:"qsYDvt7EFeM",
-    still:"https://i.ytimg.com/vi/qsYDvt7EFeM/hq720.jpg", pos:"center 40%",
-    line:"움직임이 가장 큰 교전 구간을 전 컷 생성으로 처리한 후속편.",
-    note:"타격과 클린치처럼 형태가 쉽게 무너지는 동작을 생성만으로 버티게 하는 것이 목표였습니다. 컷을 1~2초로 짧게 끊어 붕괴 구간을 원천 차단하고, 모션블러가 자연스럽게 걸린 테이크만 선별해 이었습니다. Ep.07 대비 접촉 순간의 안정성을 끌어올린 버전입니다." },
-  { ko:"To Find the Eternal", en:"TO FIND THE ETERNAL — CINEMATIC SHORT", type:"시네마틱 숏",
-    method:"100% AI 생성", tools:["Veo","Kling","Nano Banana Pro"], ratio:"9:16", id:"iTkpwEPm9hk",
-    still:"stills/eternal.jpg", pos:"center 44%",
-    line:"커맨드센터와 화성 지표를 오가는 세로형 밀리터리 SF 숏.",
-    note:"정보량이 많은 공간을 세로 프레임에 담기 위해 인물 상반신과 스크린 두 요소만 남겼습니다. 실내 커맨드센터와 화성 외부 시퀀스의 색온도를 의도적으로 갈라놓고, 컷 길이를 2초 이하로 유지해 세로 화면에서도 밀도가 떨어지지 않게 편집했습니다." },
-  { ko:"OHIR 토너 프로덕트 필름", en:"OHIR TONER — PRODUCT FILM", type:"뷰티 프로덕트",
-    method:"100% AI 생성", tools:["Nano Banana Pro","Veo","Kling"], ratio:"9:16", id:"7sTJ_lE218g",
-    still:"stills/ohir.jpg", pos:"center 50%",
-    line:"제품 실물 촬영 없이 물성과 성분을 정물 조명으로 세운 스킨케어 필름.",
-    note:"유리 보틀과 투명 액체는 생성 모델이 가장 쉽게 무너지는 소재입니다. 반사와 굴절 방향, 라벨 타이포의 위치를 스타트 프레임에서 완전히 확정한 뒤 카메라 이동을 짧게 끊어, 형태와 로고가 흔들리지 않는 구간만 채택했습니다." },
-  { ko:"GOYOA 살균가습기 브랜드 필름", en:"GOYOA STERILE HUMIDIFIER — BRAND FILM", type:"브랜드 필름",
-    method:"100% AI 생성", tools:["Veo","Nano Banana Pro","Kling"], ratio:"9:16", id:"8idgTEJidCU",
-    still:"stills/goyoa.jpg", pos:"center 46%",
-    line:"100℃ 살균 구조를 아기의 하루 안으로 옮긴 세로형 제품 필름.",
-    note:"기술 사양을 설명하지 않고 생활 장면으로 번역하는 것이 과제였습니다. 아침 햇빛이 든 거실 한 컷을 기준 프레임으로 잡고 제품·아기·공간의 색온도를 동일한 값으로 고정한 뒤, 수증기와 광량 변화만으로 시간의 흐름을 만들었습니다." },
-].map((p, i) => ({ ...p, no:String(i+1).padStart(2,"0"), code:"KM-"+String(i+1).padStart(2,"0"),
-  url:"https://www.youtube.com/watch?v=" + p.id }));
+const CAT = [
+  { key:"9와0", ko:"9와 0 사이", format:"장편 극영화", method:"실사 촬영", year:"2025", runtime:"장편",
+    still:"stills/film_9-0.jpg", pos:"center 40%", id:"fNiSbzIptgA",
+    role:"기획 · 연출 · 편집", tools:["실사 촬영","편집","컬러"],
+    logline:"기획부터 최종 아웃풋까지 직접 완주한 장편 극영화. 강민준 필모의 중심축." },
+  { key:"밀지마", ko:"밀지마세요", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"단편",
+    still:"stills/milji.jpg", pos:"center 30%", id:"cWZGminnUUI",
+    role:"기획 · 연출 · 편집", tools:["실사 촬영","편집"],
+    logline:"일상의 압박을 밀도 있게 담은 단편 극영화." },
+  { key:"스마트혼", ko:"스마트혼", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"단편",
+    still:"stills/smart.jpg", pos:"center 30%", id:"t36MTdfh-2c",
+    role:"기획 · 연출 · 편집", tools:["실사 촬영","편집"],
+    logline:"현대의 관계와 기술을 소재로 한 단편 극영화." },
+  { key:"bestgift", ko:"The Best Gift", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"단편",
+    still:"stills/bestgift.jpg", pos:"center 40%", id:"BtBYbApYu1E",
+    role:"기획 · 연출 · 편집", tools:["실사 촬영","편집"],
+    logline:"선물이라는 소재로 감정을 눌러 담은 단편." },
+  { key:"아버지", ko:"아버지의 마음", format:"다큐멘터리", method:"실사 촬영", year:"2025", runtime:"다큐",
+    still:"stills/father.jpg", pos:"center 30%", id:"PtO7yhwarRY",
+    role:"촬영 · 편집", tools:["실사 촬영","편집"], client:"조이풀 백오백 2기",
+    logline:"조이풀 백오백 2기 선교 여정을 따라간 다큐멘터리." },
+  { key:"교육814", ko:"교육 8.14", format:"다큐멘터리", method:"실사 촬영", year:"2025", runtime:"다큐",
+    still:"stills/gyo814.jpg", pos:"center 42%", id:"MqbahhpGC4Y",
+    role:"촬영 · 편집", tools:["실사 촬영","편집"], client:"부천 체인지 교육",
+    logline:"부천 한 태권도장의 체인지 교육 현장을 기록한 다큐멘터리." },
+  { key:"crack", ko:"The Crack", format:"다큐멘터리", method:"실사 촬영", year:"2025", runtime:"다큐",
+    still:"stills/promised.jpg", pos:"center 22%", id:"iUU1rmK_EhA",
+    role:"촬영 · 편집", tools:["실사 촬영","편집"],
+    logline:"틈에서 시작되는 이야기를 따라간 다큐멘터리." },
+  { key:"reckless", ko:"Reckless Love", format:"뮤직비디오", method:"실사 촬영", year:"2025", runtime:"MV",
+    still:"stills/reckless.jpg", pos:"center 58%", id:"VBkuSW9ymXI",
+    role:"연출 · 편집", tools:["실사 촬영","편집","컬러"], client:"AOD",
+    logline:"AOD의 'Reckless Love' 뮤직비디오." },
+  { key:"슬픈", ko:"세상에서 가장 슬픈 이야기", format:"뮤직비디오", method:"실사 촬영", year:"2025", runtime:"MV",
+    still:"stills/sad.jpg", pos:"center 25%", id:"TB9x2sIg2ss",
+    role:"연출 · 편집", tools:["실사 촬영","편집"], client:"초코와 바닐라",
+    logline:"초코와 바닐라의 감성 뮤직비디오." },
+  { key:"backstage", ko:"Backstage Singer", format:"뮤직비디오", method:"실사 촬영", year:"2025", runtime:"MV",
+    still:"stills/backstage.jpg", pos:"center 28%", id:"Rtk2ppjKnOo",
+    role:"연출 · 편집", tools:["실사 촬영","편집"], client:"박세정",
+    logline:"박세정의 'Backstage Singer' 뮤직비디오." },
+  { key:"jehovah", ko:"여호와가 싸우리라", format:"AI 필름 · 내러티브", method:"100% AI 생성", year:"2026", runtime:"본편",
+    still:"stills/jehovah.jpg", pos:"center 42%", id:"n9LnXow7cG8",
+    role:"기획 · 연출 · 생성 · 편집", tools:["Veo","Kling","Nano Banana Pro"],
+    logline:"촬영 없이 전 컷을 생성으로 만든 성경 서사 본편." },
+  { key:"jinju_b", ko:"JINJU 시티 필름", format:"AI 필름 · 도시 브랜딩", method:"100% AI 생성", year:"2026", runtime:"16:9",
+    still:"stills/jinju_b2.jpg", pos:"center 50%", id:"GCvAS_3MHHA",
+    role:"기획 · 연출 · 생성 · 편집", tools:["Veo 3.1"],
+    logline:"남강 유등의 불빛으로 진주의 밤을 그린 도시 홍보 필름." },
+  { key:"jinju_c", ko:"진주성 — 진주대첩", format:"AI 필름 · 히스토리컬", method:"100% AI 생성", year:"2026", runtime:"16:9",
+    still:"stills/jinju_c2.jpg", pos:"center 30%", id:"HO_PU2CEUsE",
+    role:"기획 · 연출 · 생성 · 편집", tools:["Seedance 2.5"],
+    logline:"불화살이 쏟아지는 진주성 야간 공성전을 재현한 역사 시퀀스." },
+  { key:"sw7", ko:"SWITCH Ep.07 — Octagon", format:"AI 필름 · 시리즈", method:"100% AI 생성", year:"2026", runtime:"16:9",
+    still:"https://i.ytimg.com/vi/93RVjL9U8dg/hq720.jpg", pos:"center 38%", id:"93RVjL9U8dg",
+    role:"연출 · 생성 · 편집", tools:["Veo","Kling","Nano Banana Pro"],
+    logline:"옥타곤·관중·조명까지 전부 생성으로 세운 중계 톤 에피소드." },
+  { key:"sw20", ko:"SWITCH Ep.20 — Rough Cut", format:"AI 필름 · 그린스크린", method:"실촬 + AI 합성", year:"2026", runtime:"16:9",
+    still:"stills/switch20.jpg", pos:"center 40%", id:"eU_4mRKVUd8",
+    role:"촬영 · 키잉 · 합성 · 편집", tools:["크로마키","SwitchX","Veo","Kling"],
+    logline:"시리즈 중 유일하게 실촬 소스를 키잉해 생성 배경과 합성한 편." },
+  { key:"octagon2", ko:"Octagon II — Fight Sequence", format:"AI 필름 · 시리즈", method:"100% AI 생성", year:"2026", runtime:"16:9",
+    still:"https://i.ytimg.com/vi/qsYDvt7EFeM/hq720.jpg", pos:"center 40%", id:"qsYDvt7EFeM",
+    role:"연출 · 생성 · 편집", tools:["Veo","Kling"],
+    logline:"움직임이 가장 큰 교전 구간을 전 컷 생성으로 처리한 후속편." },
+  { key:"eternal", ko:"To Find the Eternal", format:"AI 필름 · 시네마틱", method:"100% AI 생성", year:"2026", runtime:"9:16",
+    still:"stills/eternal.jpg", pos:"center 44%", id:"iTkpwEPm9hk",
+    role:"연출 · 생성 · 편집", tools:["Veo","Kling","Nano Banana Pro"],
+    logline:"커맨드센터와 화성 지표를 오가는 세로형 밀리터리 SF 숏." },
+  { key:"ohir", ko:"OHIR 토너", format:"AI 필름 · 프로덕트", method:"100% AI 생성", year:"2026", runtime:"9:16",
+    still:"stills/ohir.jpg", pos:"center 50%", id:"7sTJ_lE218g",
+    role:"연출 · 생성 · 편집", tools:["Nano Banana Pro","Veo","Kling"],
+    logline:"실물 촬영 없이 물성과 성분을 정물 조명으로 세운 스킨케어 필름." },
+  { key:"goyoa", ko:"GOYOA 살균가습기", format:"AI 필름 · 브랜드", method:"100% AI 생성", year:"2025", runtime:"9:16",
+    still:"stills/goyoa.jpg", pos:"center 46%", id:"8idgTEJidCU",
+    role:"연출 · 생성 · 편집", tools:["Veo","Nano Banana Pro","Kling"],
+    logline:"100℃ 살균 구조를 아기의 하루 안으로 옮긴 세로형 제품 필름." },
+];
+CAT.forEach(c => { c.url = "https://youtu.be/" + c.id; });
 
-const PIPE = [
-  { no:"01", ko:"기획 · 컨셉 보드", en:"CONCEPT", d:"레퍼런스를 해체하고 컷 단위 연출 의도를 문서로 먼저 고정합니다." },
-  { no:"02", ko:"스타트 프레임 설계", en:"KEYFRAME", d:"Nano Banana Pro로 인물·조명·앵글 기준 프레임을 만들어 톤을 잠급니다." },
-  { no:"03", ko:"I2V 컷 확장", en:"GENERATION", d:"Veo·Kling으로 컷을 확장하고, 형태가 유지되는 테이크만 선별합니다." },
-  { no:"04", ko:"정합 · 클린업", en:"RETOUCH", d:"아티팩트를 제거하고 컷 간 색·질감·그레인을 맞춥니다. 실촬 소스가 있는 편은 키잉과 합성을 함께 진행합니다." },
-  { no:"05", ko:"편집 · 컬러 · 사운드", en:"FINISHING", d:"리듬과 컬러를 잡고 납품 포맷에 맞춰 마스터를 출력합니다." },
+const FMTKEY = f => f.includes("다큐") ? "doc" : f.includes("뮤직") ? "mv" : f.includes("AI") ? "ai" : "film";
+const BY = k => CAT.find(c => c.key === k);
+const TOP10 = ["jehovah","jinju_b","eternal","jinju_c","9와0","슬픈","backstage","ohir","밀지마","아버지"];
+const ROWS = [
+  { title:"대표작 TOP 10", keys:TOP10, ranked:true },
+  { title:"AI 프로덕션", keys:["jehovah","jinju_b","jinju_c","sw7","sw20","octagon2","eternal","ohir","goyoa"] },
+  { title:"극영화 & 단편", keys:["9와0","밀지마","스마트혼","bestgift"] },
+  { title:"다큐멘터리", keys:["아버지","교육814","crack"] },
+  { title:"뮤직비디오", keys:["reckless","슬픈","backstage"] },
 ];
-const BIO = [
-  ["NAME","강민준 / Kang Minjune"], ["ROLE","AI 영상 연출 · VFX 합성 · 편집"], ["BASE","Seoul, Korea"],
-  ["ACTIVE","2025.10 — 2026.08 · 9편"], ["METHOD","8편 100% AI 생성 · 1편 실촬 합성"],
-  ["EMAIL","idrkdalswns@gmail.com"], ["PHONE","010 2311 5166"],
-];
-const STACK = [
-  ["Google Veo","I2V / T2V"], ["Kling","MOTION / EXTENSION"], ["Seedance 2.5","T2V · JINJU"], ["Nano Banana Pro","START FRAME"],
-  ["SwitchX","CHROMA / COMP · EP.20"], ["Edit · Grade","CUT / COLOR / MASTER"],
-];
+const HERO = "jehovah";
+
 const $ = s => document.querySelector(s);
-const el = (t, c, h) => { const n = document.createElement(t); if (c) n.className = c; if (h != null) n.innerHTML = h; return n; };
-let active = 0;
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const bg = c => `background-image:url('${c.still}');background-position:${c.pos}`;
+const short = m => m.includes("AI 생성") ? "AI" : m.includes("합성") ? "HYBRID" : "LIVE";
 
-function build() {
-  const track = $("#track"), tabs = $("#tabs"), rows = $("#rows");
-  DATA.forEach((p, i) => {
-    const s = el("div", "slide");
-    s.innerHTML = '<img src="' + p.still + '" alt="' + p.ko + '" loading="' + (i ? "lazy" : "eager") +
-      '" style="object-position:' + p.pos + '"><div class="scrim"></div>';
-    track.appendChild(s);
+function buildHome() {
+  const h = BY(HERO);
+  $("#hero").innerHTML =
+    `<div class="bg" style="${bg(h)}"></div><div class="scrim"></div>
+     <div class="mark">M I N J U N E — F I L M</div>
+     <div class="cap">
+       <h1>${esc(h.ko)}</h1>
+       <div class="meta"><span>${esc(h.format)}</span><span style="opacity:.5">·</span><span>${h.year}</span><span style="opacity:.5">·</span><span>${short(h.method)}</span></div>
+       <a class="play" href="${h.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ 재생</a>
+     </div>`;
+  $("#hero").onclick = () => go(HERO);
+  $("#rows").innerHTML = ROWS.map(r =>
+    `<div><div class="rowt" style="margin-bottom:11px">${esc(r.title)}</div><div class="hsc">` +
+    r.keys.map((k, i) => {
+      const c = BY(k);
+      const cls = r.ranked ? (i + 1 > 9 ? "card rk rk2" : "card rk") : "card";
+      const rank = r.ranked ? `<span class="rank">${i + 1}</span>` : "";
+      return `<div class="${cls}" data-k="${c.key}">${rank}
+        <div class="poster" style="${bg(c)}">
+          <div class="tband"><span>${esc(c.ko)}</span></div>
+        </div></div>`;
+    }).join("") + `</div></div>`
+  ).join("");
+  document.querySelectorAll("#rows .card").forEach(el => el.onclick = () => go(el.dataset.k));
+}
 
-    const t = el("button", "tab");
-    t.type = "button";
-    t.innerHTML = '<span class="in"><span class="th"><img src="' + p.still + '" alt="" loading="lazy" style="object-position:' + p.pos +
-      '"></span><span class="tx"><span class="no">' + p.no + '</span><span class="ti">' + p.ko + '</span></span></span>';
-    t.onclick = () => go(i);
-    tabs.appendChild(t);
-
-    const r = el("a", "row");
-    r.href = p.url; r.target = "_blank"; r.rel = "noopener";
-    r.innerHTML = '<span class="th"><img src="' + p.still + '" alt="" loading="lazy" style="object-position:' + p.pos +
-      '"></span><span class="tx"><span class="ti">' + p.ko + '</span><span class="me">' + p.no + ' · ' + p.method + ' · ' + p.ratio +
-      '</span></span><span class="goto">▶</span>';
-    r.onclick = () => go(i);
-    rows.appendChild(r);
-  });
-
-  const flow = $("#flow");
-  PIPE.forEach(s => flow.appendChild(el("div", "step",
-    '<span class="n">' + s.no + '</span><span class="k">' + s.ko + '</span><span class="e">' + s.en + '</span><span class="d">' + s.d + '</span>')));
-
-  const bio = $("#bio");
-  BIO.forEach(([k, v]) => bio.appendChild(el("div", "kv", '<span class="k">' + k + '</span><span class="v">' + v + '</span>')));
-
-  const st = $("#stack");
-  STACK.forEach(([n, r]) => st.appendChild(el("div", "st", '<span class="n">' + n + '</span><span class="r">' + r + '</span>')));
+function buildDetail(c) {
+  const rel = CAT.filter(x => x.key !== c.key && FMTKEY(x.format) === FMTKEY(c.format)).slice(0, 6);
+  const credits = [
+    ["역할", c.role],
+    c.client ? ["클라이언트", c.client] : ["포맷", c.format],
+    ["제작 방식", c.method],
+    ["툴 · 장비", c.tools.join(" · ")],
+  ];
+  $("#detail").innerHTML =
+    `<div class="dhero">
+       <div class="bg" style="${bg(c)}"></div><div class="scrim"></div>
+       <button class="navbtn back" onclick="goHome()">← 목록</button>
+       <button class="navbtn close" onclick="goHome()">✕</button>
+     </div>
+     <div class="dbody">
+       <h1>${esc(c.ko)}</h1>
+       <div class="dmeta"><span>${c.year}</span><span style="opacity:.5">·</span><span>${esc(c.runtime)}</span><span style="opacity:.5">·</span><span>${esc(c.format)}</span></div>
+       <div class="badges"><span class="bd m">${esc(c.method)}</span><span class="bd f">${esc(c.format)}</span></div>
+       <a class="dplay" href="${c.url}" target="_blank" rel="noopener">▶ 재생하기</a>
+       <p class="logline">${esc(c.logline)}</p>
+       <div class="creds">${credits.map(([k, v]) =>
+         `<div class="kv"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join("")}</div>
+       <div style="display:flex;flex-direction:column;gap:11px;margin-top:6px">
+         <span style="font-size:15px;font-weight:600">관련 작업</span>
+         <div class="hsc" style="padding:0 0 4px">${rel.map(x =>
+           `<div class="card" data-k="${x.key}"><div class="poster" style="${bg(x)}">
+              <div class="tband"><span>${esc(x.ko)}</span></div></div></div>`).join("")}</div>
+       </div>
+     </div>`;
+  document.querySelectorAll("#detail .card").forEach(el => el.onclick = () => go(el.dataset.k));
 }
 
 function render() {
-  const p = DATA[active];
-  $("#track").style.transform = "translateX(-" + (active * 100) + "%)";
-  $("#c-kicker").textContent = "NOW SHOWING — " + p.no + " / 09";
-  $("#c-title").textContent = p.ko;
-  $("#c-sub").textContent = p.en;
-  $("#c-line").textContent = p.line;
-  $("#c-play").href = p.url;
-  $("#c-tools").innerHTML = '<span class="m">' + p.method + '</span>' + p.tools.map(t => "<span>" + t + "</span>").join("");
-  $("#w-code").textContent = p.code;
-  $("#w-note").textContent = p.note;
-  document.querySelectorAll(".tab").forEach((n, i) => n.classList.toggle("on", i === active));
-  document.querySelectorAll(".row").forEach((n, i) => n.classList.toggle("on", i === active));
+  const key = decodeURIComponent(location.hash.slice(1));
+  const c = key && BY(key);
+  if (c) {
+    buildDetail(c);
+    $("#home").style.display = "none";
+    $("#detail").style.display = "block";
+    window.scrollTo(0, 0);
+  } else {
+    $("#home").style.display = "block";
+    $("#detail").style.display = "none";
+  }
 }
+function go(k) { location.hash = encodeURIComponent(k); }
+function goHome() { history.length > 1 ? history.back() : (location.hash = ""); }
 
-function go(i) { active = (i + DATA.length) % DATA.length; render(); }
-
-build();
+buildHome();
 render();
-$("#next").onclick = () => go(active + 1);
-$("#prev").onclick = () => go(active - 1);
-window.addEventListener("keydown", e => {
-  if (e.key === "ArrowRight") go(active + 1);
-  if (e.key === "ArrowLeft") go(active - 1);
-});
-let sx = null;
-const view = document.querySelector(".view");
-view.addEventListener("touchstart", e => { sx = e.touches[0].clientX; }, { passive: true });
-view.addEventListener("touchend", e => {
-  if (sx === null) return;
-  const dx = e.changedTouches[0].clientX - sx;
-  if (Math.abs(dx) > 50) go(active + (dx < 0 ? 1 : -1));
-  sx = null;
-}, { passive: true });
+window.addEventListener("hashchange", render);
 </script>
 </body>
 </html>

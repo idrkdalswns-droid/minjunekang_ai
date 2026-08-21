@@ -1,17 +1,16 @@
-# kang-minjune-portfolio
+# MINJUNE. — 강민준 필름 포트폴리오
 
-강민준 — AI Film Director / VFX Compositor 포트폴리오.
+극영화 · 다큐 · 뮤직비디오 · AI 프로덕션 19편. 모바일 우선, 데스크톱에서는 중앙 520px 컬럼.
 
-## GitHub Pages 배포 방법
+## 배포 방법 (GitHub Pages)
+1. 저장소에 이 폴더의 `index.html`과 `stills/` 폴더 업로드
+2. Settings → Pages → Branch `main`, 폴더 `/ (root)` → Save
+3. `https://<아이디>.github.io/<저장소명>/` 접속
 
-1. github.com에서 새 저장소 생성 (예: `portfolio`, Public)
-2. 이 폴더의 파일 전부를 저장소에 업로드
-   - 웹에서: Add file → Upload files → `index.html`과 `stills/` 폴더를 드래그
-3. 저장소 Settings → Pages → Branch를 `main`, 폴더 `/ (root)`로 지정 후 Save
-4. 1~2분 뒤 `https://<아이디>.github.io/portfolio/` 에서 접속 가능
+Netlify Drop(netlify.com/drop)에 폴더째 드래그해도 바로 배포됨.
 
-파일 구조:
+## 구조
 ```
-index.html
-stills/   (스틸 5장)
+index.html          단일 페이지 앱 (홈 + 상세, 해시 라우팅 — 브라우저 뒤로가기 지원)
+stills/             포스터 스틸 17장 (최적화 JPG)
 ```
