@@ -36,7 +36,7 @@
   .hero .mark { position:absolute; left:0; right:0; top:26px; display:flex; justify-content:center;
     font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.34em; color:rgba(255,255,255,.72); }
   .hero .cap { position:absolute; left:0; right:0; bottom:0; padding:22px 18px; display:flex; flex-direction:column; align-items:center; gap:13px; }
-  .hero h1 { margin:0; font-size:33px; line-height:1.02; font-weight:700; letter-spacing:-.03em; text-align:center; text-wrap:balance; }
+  .hero h1 { margin:0; font-size:33px; line-height:1.02; font-weight:700; letter-spacing:-.03em; text-align:center; text-wrap:balance; word-break:keep-all; }
   .hero .meta { display:flex; gap:8px; align-items:center; font-size:12.5px; color:#C3C8CC; font-weight:300; }
   .hero .play { display:flex; align-items:center; justify-content:center; gap:9px; width:100%;
     background:#fff; color:#08090B; font-weight:700; font-size:17px; padding:15px 0; border-radius:7px; }
@@ -50,10 +50,10 @@
   .card.rk2 { width:176px; }
   .rank { position:absolute; left:-6px; bottom:-14px; z-index:1; font-size:104px; font-weight:700; line-height:.8;
     color:#E0141F; -webkit-text-stroke:1px #FF3B44; letter-spacing:-.06em; text-shadow:0 4px 18px rgba(224,20,31,.45); }
-  .card.rk2 .rank { font-size:78px; letter-spacing:-.1em; }
+  .card.rk2 .rank { font-size:104px; letter-spacing:-.06em; display:inline-block; transform-origin:left bottom; transform:scaleX(.6); }
   .tband { position:absolute; left:0; right:0; bottom:0; padding:28px 9px 9px;
     background:linear-gradient(to top,rgba(8,9,11,.94) 10%,rgba(8,9,11,0)); }
-  .tband span { display:block; font-size:13px; font-weight:700; line-height:1.12; letter-spacing:-.02em; text-wrap:balance; color:#fff; }
+  .tband span { display:block; font-size:13px; font-weight:700; line-height:1.15; letter-spacing:-.02em; text-wrap:balance; word-break:keep-all; color:#fff; }
 
   .dhero { position:relative; aspect-ratio:1/1; background:#12161a; overflow:hidden; }
   .dhero .bg { position:absolute; inset:0; background-size:cover; }
@@ -62,7 +62,7 @@
     background:rgba(8,9,11,.62); font-size:14px; font-weight:600; backdrop-filter:blur(6px); cursor:pointer; border:none; color:#fff; }
   .back { left:14px; padding:0 14px 0 11px; } .close { right:14px; width:36px; justify-content:center; padding:0; font-size:17px; }
   .dbody { padding:20px 22px 110px; display:flex; flex-direction:column; gap:18px; }
-  .dbody h1 { margin:0; font-size:26px; font-weight:700; letter-spacing:-.03em; }
+  .dbody h1 { margin:0; font-size:26px; font-weight:700; letter-spacing:-.03em; word-break:keep-all; }
   .dmeta { display:flex; gap:8px; align-items:center; font-size:13px; color:#9CA1A6; font-weight:300; flex-wrap:wrap; }
   .badges { display:flex; gap:7px; flex-wrap:wrap; }
   .bd { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; padding:4px 9px; border-radius:3px; }
@@ -72,6 +72,9 @@
     font-weight:600; font-size:16px; padding:13px 0; border-radius:6px; }
   .dplay:active { background:#B2231C; }
   .logline { margin:0; font-size:15px; line-height:1.7; color:#DDE1E4; font-weight:300; text-wrap:pretty; }
+  .tagline { margin:0; font-size:19px; line-height:1.45; font-weight:600; letter-spacing:-.02em; color:#fff;
+    word-break:keep-all; text-wrap:balance; }
+  .tagline + .logline { color:#9CA1A6; }
   .creds { border-top:1px solid rgba(230,232,234,.12); margin-top:2px; }
   .kv { display:grid; grid-template-columns:74px 1fr; gap:14px; padding:11px 0; border-bottom:1px solid rgba(230,232,234,.1); }
   .kv .k { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; color:#5D6267; padding-top:3px; }
@@ -111,30 +114,36 @@ const CAT = [
     still:"stills/film_9-0.jpg", pos:"center 40%", id:"fNiSbzIptgA",
     role:"기획 · 연출 · 편집", tools:["실사 촬영","편집","컬러"],
     logline:"기획부터 최종 아웃풋까지 직접 완주한 장편 극영화. 강민준 필모의 중심축." },
-  { key:"밀지마", ko:"밀지마세요", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"단편",
+  { key:"밀지마", ko:"밀지마세요", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"17분",
     still:"stills/milji.jpg", pos:"center 30%", id:"cWZGminnUUI",
     role:"기획 · 연출 · 편집", tools:["실사 촬영","편집"],
-    logline:"일상의 압박을 밀도 있게 담은 단편 극영화." },
-  { key:"스마트혼", ko:"스마트혼", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"단편",
+    tagline:"10년이 무너지는 데는 단 하루면 충분했다",
+    logline:"10년 만에 취업한 민석은 자꾸 어디론가 올라가려 한다. 밤 언덕 위에서 한 소녀가 묻는다. '왜 자꾸 올라가려는 거야?' 사다리에 매달린 그의 모습에서 우리는 나 자신을 본다." },
+  { key:"스마트혼", ko:"스마트혼", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"22분",
     still:"stills/smart.jpg", pos:"center 30%", id:"t36MTdfh-2c",
     role:"기획 · 연출 · 편집", tools:["실사 촬영","편집"],
-    logline:"현대의 관계와 기술을 소재로 한 단편 극영화." },
-  { key:"bestgift", ko:"The Best Gift", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"단편",
+    tagline:"사랑하는 사람이 죽었는데, 그는 휴대폰 속에 살아있다",
+    logline:"게임 중독자 영우가 사고로 죽고, 그의 혼이 스마트폰 속에 갇힌다. '누나, 나 좀 살려줘.' 실재하지 않는 존재와 더 깊은 관계를 맺어가는 잔인한 회복의 이야기." },
+  { key:"bestgift", ko:"The Best Gift", format:"단편 극영화", method:"실사 촬영", year:"2025", runtime:"7분",
     still:"stills/bestgift.jpg", pos:"center 40%", id:"BtBYbApYu1E",
     role:"기획 · 연출 · 편집", tools:["실사 촬영","편집"],
-    logline:"선물이라는 소재로 감정을 눌러 담은 단편." },
-  { key:"아버지", ko:"아버지의 마음", format:"다큐멘터리", method:"실사 촬영", year:"2025", runtime:"다큐",
+    tagline:"길은 내가 아니다",
+    logline:"성탄 전야, 공연에 늦을까 조바심 내는 남자. 택시 기사는 계속 웃으며 같은 말만 반복한다. '가장 안전한 길로 안내해 드릴게요.' 7분이 당신의 인생 전체를 돌아보게 만든다." },
+  { key:"아버지", ko:"아버지의 마음", format:"다큐멘터리", method:"실사 촬영", year:"2025", runtime:"43분",
     still:"stills/father.jpg", pos:"center 30%", id:"PtO7yhwarRY",
     role:"촬영 · 편집", tools:["실사 촬영","편집"], client:"조이풀 백오백 2기",
-    logline:"조이풀 백오백 2기 선교 여정을 따라간 다큐멘터리." },
+    tagline:"뭐야, 이게 선교라고?",
+    logline:"조이풀 백오백 2기의 열방 여정. 무엇이 이 나이에 시간과 돈을 포기하며 공동체를 살게 하는가. 그 답을 향한 아버지의 사랑에서 찾아가는 선교 다큐멘터리." },
   { key:"교육814", ko:"교육 8.14", format:"다큐멘터리", method:"실사 촬영", year:"2025", runtime:"다큐",
     still:"stills/gyo814.jpg", pos:"center 42%", id:"MqbahhpGC4Y",
-    role:"촬영 · 편집", tools:["실사 촬영","편집"], client:"부천 체인지 교육",
-    logline:"부천 한 태권도장의 체인지 교육 현장을 기록한 다큐멘터리." },
+    role:"촬영 · 편집", tools:["실사 촬영","편집"], client:"HOLYTOUCH · 크라우드펀딩",
+    tagline:"우리 아이들의 행복을 위해, 대한민국 교육에 해방이 필요하다",
+    logline:"입시에 갇힌 대한민국 교육의 현실을 정면으로 마주한 교육 해방 다큐멘터리. 텀블벅 크라우드펀딩에서 목표액을 넘긴 103% 달성, 후원자 61명의 지지로 완성됐다." },
   { key:"crack", ko:"The Crack", format:"다큐멘터리", method:"실사 촬영", year:"2025", runtime:"다큐",
     still:"stills/promised.jpg", pos:"center 22%", id:"iUU1rmK_EhA",
-    role:"촬영 · 편집", tools:["실사 촬영","편집"],
-    logline:"틈에서 시작되는 이야기를 따라간 다큐멘터리." },
+    role:"기획 · 촬영 · 편집", tools:["실사 촬영","편집"], client:"PROMISE LAND · 일본 오이타",
+    tagline:"지금 일본에서, 무슨 일이 일어나고 있는가",
+    logline:"하나의 질문에서 출발하는 일본 선교 다큐멘터리. 오이타 순복음교회를 비롯한 현지 교회를 찾아가 일본 기독교의 역사와 지금 일어나는 변화를 인터뷰로 담았다. 프라미스랜드 컨퍼런스에 모인 청년들이 '왜 우리가 지금 이곳에 있는가'를 하나의 시선으로 마주하게 하는 오프닝 필름." },
   { key:"reckless", ko:"Reckless Love", format:"뮤직비디오", method:"실사 촬영", year:"2025", runtime:"MV",
     still:"stills/reckless.jpg", pos:"center 58%", id:"VBkuSW9ymXI",
     role:"연출 · 편집", tools:["실사 촬영","편집","컬러"], client:"AOD",
@@ -188,9 +197,9 @@ CAT.forEach(c => { c.url = "https://youtu.be/" + c.id; });
 
 const FMTKEY = f => f.includes("다큐") ? "doc" : f.includes("뮤직") ? "mv" : f.includes("AI") ? "ai" : "film";
 const BY = k => CAT.find(c => c.key === k);
-const TOP10 = ["jehovah","jinju_b","eternal","jinju_c","9와0","슬픈","backstage","ohir","밀지마","아버지"];
+const TOP10 = ["jehovah","교육814","아버지","jinju_c","9와0"];
 const ROWS = [
-  { title:"대표작 TOP 10", keys:TOP10, ranked:true },
+  { title:"대표작 TOP 5", keys:TOP10, ranked:true },
   { title:"AI 프로덕션", keys:["jehovah","jinju_b","jinju_c","sw7","sw20","octagon2","eternal","ohir","goyoa"] },
   { title:"극영화 & 단편", keys:["9와0","밀지마","스마트혼","bestgift"] },
   { title:"다큐멘터리", keys:["아버지","교육814","crack"] },
@@ -241,13 +250,13 @@ function buildDetail(c) {
     `<div class="dhero">
        <div class="bg" style="${bg(c)}"></div><div class="scrim"></div>
        <button class="navbtn back" onclick="goHome()">← 목록</button>
-       <button class="navbtn close" onclick="goHome()">✕</button>
      </div>
      <div class="dbody">
        <h1>${esc(c.ko)}</h1>
        <div class="dmeta"><span>${c.year}</span><span style="opacity:.5">·</span><span>${esc(c.runtime)}</span><span style="opacity:.5">·</span><span>${esc(c.format)}</span></div>
        <div class="badges"><span class="bd m">${esc(c.method)}</span><span class="bd f">${esc(c.format)}</span></div>
        <a class="dplay" href="${c.url}" target="_blank" rel="noopener">▶ 재생하기</a>
+       ${c.tagline ? `<p class="tagline">"${esc(c.tagline)}"</p>` : ""}
        <p class="logline">${esc(c.logline)}</p>
        <div class="creds">${credits.map(([k, v]) =>
          `<div class="kv"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join("")}</div>
@@ -275,7 +284,7 @@ function render() {
   }
 }
 function go(k) { location.hash = encodeURIComponent(k); }
-function goHome() { history.length > 1 ? history.back() : (location.hash = ""); }
+function goHome() { location.hash = ""; window.scrollTo(0, 0); }
 
 buildHome();
 render();
