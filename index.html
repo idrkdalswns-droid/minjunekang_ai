@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MINJUNE. — 강민준 필름 포트폴리오</title>
-<meta name="description" content="강민준 — Film Director · Editor · AI/VFX. 극영화·다큐멘터리·뮤직비디오·AI 프로덕션 19편.">
+<meta name="description" content="강민준 — Film Director · Editor · AI/VFX. 극영화·다큐멘터리·뮤직비디오·AI 프로덕션 22편.">
 <meta property="og:title" content="MINJUNE. — 강민준 필름 포트폴리오">
-<meta property="og:description" content="극영화 · 다큐 · 뮤직비디오 · AI 프로덕션 19편.">
+<meta property="og:description" content="극영화 · 다큐 · 뮤직비디오 · AI 프로덕션 22편.">
 <meta property="og:image" content="stills/jehovah.jpg">
 <meta name="theme-color" content="#08090B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,13 +30,27 @@
   .brand .logo { font-family:'IBM Plex Mono',monospace; font-size:19px; font-weight:600; letter-spacing:.02em; color:#fff; }
   .brand .logo b { color:#E0141F; }
 
-  .hero { position:relative; margin:0 22px; border-radius:14px; overflow:hidden; aspect-ratio:4/5; background:#12161a; cursor:pointer; }
-  .hero .bg { position:absolute; inset:0; background-size:cover; }
+  .hero { position:relative; margin:0 22px; border-radius:14px; overflow:hidden; aspect-ratio:4/5; background:#12161a; cursor:pointer;
+    touch-action:pan-y; user-select:none; -webkit-user-select:none; -webkit-tap-highlight-color:transparent; }
+  .htrack { position:absolute; inset:0; display:flex; will-change:transform; transition:transform .62s cubic-bezier(.22,.8,.24,1); }
+  .hslide { position:relative; flex:0 0 100%; height:100%; overflow:hidden; }
+  .hero .bg { position:absolute; inset:0; background-size:cover; transform:scale(1); transition:transform .8s ease; }
+  .hslide.on .bg { transform:scale(1.07); transition:transform 6.5s linear; }
+  .hbars { position:absolute; top:14px; left:16px; right:16px; display:flex; gap:4px; z-index:3; pointer-events:none; }
+  .hbars i { flex:1; height:2.5px; border-radius:2px; background:rgba(255,255,255,.28); overflow:hidden; }
+  .hbars i b { display:block; height:100%; width:0; background:#fff; }
+  .hbars i.done b { width:100%; }
+  .hbars i.on b { animation:hfill var(--dur) linear forwards; }
+  .hbars.paused i.on b { animation-play-state:paused; }
+  @keyframes hfill { from { width:0 } to { width:100% } }
+  .hero .kick { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.2em; color:rgba(255,255,255,.78); }
+  .hero .kick b { color:#E0141F; font-weight:500; }
+  @media (prefers-reduced-motion: reduce) { .hslide.on .bg { transform:none; } .htrack { transition-duration:.3s; } }
   .hero .scrim { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,9,11,.94) 4%,rgba(8,9,11,.15) 46%,rgba(8,9,11,.35)); }
-  .hero .mark { position:absolute; left:0; right:0; top:26px; display:flex; justify-content:center;
+  .hero .mark { position:absolute; left:0; right:0; top:30px; z-index:3; pointer-events:none; display:flex; justify-content:center;
     font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.34em; color:rgba(255,255,255,.72); }
   .hero .cap { position:absolute; left:0; right:0; bottom:0; padding:22px 18px; display:flex; flex-direction:column; align-items:center; gap:13px; }
-  .hero h1 { margin:0; font-size:33px; line-height:1.02; font-weight:700; letter-spacing:-.03em; text-align:center; text-wrap:balance; word-break:keep-all; }
+  .hero h2 { margin:0; font-size:33px; line-height:1.02; font-weight:700; letter-spacing:-.03em; text-align:center; text-wrap:balance; word-break:keep-all; }
   .hero .meta { display:flex; gap:8px; align-items:center; font-size:12.5px; color:#C3C8CC; font-weight:300; }
   .hero .play { display:flex; align-items:center; justify-content:center; gap:9px; width:100%;
     background:#fff; color:#08090B; font-weight:700; font-size:17px; padding:15px 0; border-radius:7px; }
@@ -144,6 +158,16 @@ const CAT = [
     role:"기획 · 촬영 · 편집", tools:["실사 촬영","편집"], client:"PROMISE LAND · 일본 오이타",
     tagline:"지금 일본에서, 무슨 일이 일어나고 있는가",
     logline:"하나의 질문에서 출발하는 일본 선교 다큐멘터리. 오이타 순복음교회를 비롯한 현지 교회를 찾아가 일본 기독교의 역사와 지금 일어나는 변화를 인터뷰로 담았다. 프라미스랜드 컨퍼런스에 모인 청년들이 '왜 우리가 지금 이곳에 있는가'를 하나의 시선으로 마주하게 하는 오프닝 필름." },
+  { key:"crack_full", ko:"THE CRACK IN JAPAN", format:"다큐멘터리", method:"실사 촬영", year:"2025", runtime:"풀버전",
+    still:"stills/crack_full.jpg", pos:"center center", cpos:"100% center", id:"Iq42iRRBIkk",
+    role:"기획 · 촬영 · 편집", tools:["실사 촬영","편집"], client:"PROMISE LAND · 일본 오이타",
+    tagline:"죽기까지, 영원히",
+    logline:"오프닝 필름 'The Crack'에서 이어지는 풀버전 다큐멘터리. 일본의 거리 전도 현장과 현지 교회·선교사 인터뷰, 촛불 예배까지 따라가며, 기독교인이 인구의 1% 남짓인 땅에 생겨나는 작은 균열을 기록했다." },
+  { key:"fetus", ko:"우리도 태아였다", format:"캠페인 · 다큐 스케치", method:"실사 촬영", year:"2025", runtime:"캠페인",
+    still:"stills/fetus.jpg", pos:"64% center", id:"NjsJYPpCGbo",
+    role:"촬영 · 편집", tools:["현장 스케치 촬영","편집"], client:"HOLYTOUCH",
+    tagline:"그 자리에 선 사람들은, 모두 한때 태아였다",
+    logline:"낙태법 반대 집회 현장을 스케치로 담아 엮은 캠페인 영상. 갓난아기를 품에 안은 아빠, 나란히 선 가족과 시민들. 별도의 연출 없이 현장에 모인 사람들의 얼굴만으로 '우리도 태아였다'는 한 문장을 전하도록 구성했다." },
   { key:"reckless", ko:"Reckless Love", format:"뮤직비디오", method:"실사 촬영", year:"2025", runtime:"MV",
     still:"stills/reckless.jpg", pos:"center 58%", id:"VBkuSW9ymXI",
     role:"연출 · 편집", tools:["실사 촬영","편집","컬러"], client:"AOD",
@@ -156,6 +180,11 @@ const CAT = [
     still:"stills/backstage.jpg", pos:"center 28%", id:"Rtk2ppjKnOo",
     role:"연출 · 편집", tools:["실사 촬영","편집"], client:"박세정",
     logline:"박세정의 'Backstage Singer' 뮤직비디오." },
+  { key:"erase", ko:"ERASE", format:"AI 필름 · 인트로 시퀀스", method:"100% AI 생성", year:"2026", runtime:"2.39:1",
+    still:"stills/erase.jpg", pos:"center 38%", id:"NatiuNuSslw",
+    role:"기획 · 연출 · 생성 · 편집", tools:["GPT","Kling","Claude"], client:"HOLYTOUCH",
+    tagline:"눈을 뜨면, 무엇이 지워져 있을까",
+    logline:"어둠 속 단 하나의 조명 아래 누운 여자, 그녀를 내려다보며 웃는 남자. 기획부터 스타트 프레임, 영상 생성까지 GPT · Kling · Claude 파이프라인으로 완성한 심리 스릴러 'ERASE'의 인트로 시퀀스. 땀에 젖은 피부, 흘러내린 머리카락, 붉어진 눈가까지 실사 클로즈업의 질감을 생성만으로 밀어붙였다." },
   { key:"jehovah", ko:"여호와가 싸우리라", format:"AI 필름 · 내러티브", method:"100% AI 생성", year:"2026", runtime:"본편",
     still:"stills/jehovah.jpg", pos:"center 42%", id:"n9LnXow7cG8",
     role:"기획 · 연출 · 생성 · 편집", tools:["Veo","Kling","Nano Banana Pro"],
@@ -197,12 +226,12 @@ CAT.forEach(c => { c.url = "https://youtu.be/" + c.id; });
 
 const FMTKEY = f => f.includes("다큐") ? "doc" : f.includes("뮤직") ? "mv" : f.includes("AI") ? "ai" : "film";
 const BY = k => CAT.find(c => c.key === k);
-const TOP10 = ["jehovah","교육814","아버지","jinju_c","9와0"];
+const TOP10 = ["jehovah","erase","교육814","아버지","jinju_c"];
 const ROWS = [
   { title:"대표작 TOP 5", keys:TOP10, ranked:true },
-  { title:"AI 프로덕션", keys:["jehovah","jinju_b","jinju_c","sw7","sw20","octagon2","eternal","ohir","goyoa"] },
+  { title:"AI 프로덕션", keys:["erase","jehovah","jinju_b","jinju_c","sw7","sw20","octagon2","eternal","ohir","goyoa"] },
   { title:"극영화 & 단편", keys:["9와0","밀지마","스마트혼","bestgift"] },
-  { title:"다큐멘터리", keys:["아버지","교육814","crack"] },
+  { title:"다큐멘터리 & 캠페인", keys:["아버지","교육814","crack_full","crack","fetus"] },
   { title:"뮤직비디오", keys:["reckless","슬픈","backstage"] },
 ];
 const HERO = "jehovah";
@@ -210,19 +239,94 @@ const HERO = "jehovah";
 const $ = s => document.querySelector(s);
 const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
 const bg = c => `background-image:url('${c.still}');background-position:${c.pos}`;
+const pbg = c => `background-image:url('${c.still}');background-position:${c.cpos || c.pos}`;
 const short = m => m.includes("AI 생성") ? "AI" : m.includes("합성") ? "HYBRID" : "LIVE";
 
+const HERO_MS = 4500;
+function buildHero() {
+  const H = TOP10.map(BY), n = H.length;
+  const pad = v => String(v).padStart(2, "0");
+  const slide = (c, r, clone) => `<div class="hslide" data-r="${r}" data-k="${c.key}"${clone ? ' aria-hidden="true"' : ""}>
+      <div class="bg" style="${bg(c)}"></div><div class="scrim"></div>
+      <div class="cap">
+        <span class="kick">대표작 <b>${pad(r + 1)}</b> / ${pad(n)}</span>
+        <h2>${esc(c.ko)}</h2>
+        <div class="meta"><span>${esc(c.format)}</span><span style="opacity:.5">·</span><span>${c.year}</span><span style="opacity:.5">·</span><span>${short(c.method)}</span></div>
+        <a class="play" href="${c.url}" target="_blank" rel="noopener"${clone ? ' tabindex="-1"' : ""}>▶ 재생</a>
+      </div></div>`;
+  const hero = $("#hero");
+  hero.innerHTML =
+    `<div class="htrack">${slide(H[n - 1], n - 1, true)}${H.map((c, r) => slide(c, r)).join("")}${slide(H[0], 0, true)}</div>
+     <div class="hbars" style="--dur:${HERO_MS}ms">${H.map(() => "<i><b></b></i>").join("")}</div>
+     <div class="mark">M I N J U N E — F I L M</div>`;
+  const track = hero.querySelector(".htrack"), bars = hero.querySelector(".hbars");
+  const slides = [...track.children], segs = [...bars.children];
+  let pos = 1;
+  const real = p => (p - 1 + n) % n;
+  const apply = (p, anim) => {
+    track.style.transition = anim ? "" : "none";
+    track.style.transform = `translateX(${-p * 100}%)`;
+  };
+  const mark = r => {
+    slides.forEach(s => s.classList.toggle("on", +s.dataset.r === r));
+    segs.forEach((s, i) => { s.classList.remove("on"); s.classList.toggle("done", i < r); });
+    void bars.offsetWidth;
+    segs[r].classList.add("on");
+  };
+  const normalize = () => {
+    if (pos > 0 && pos < n + 1) return;
+    pos = pos <= 0 ? n : 1;
+    apply(pos, false);
+    void track.offsetWidth;
+  };
+  const step = d => { normalize(); pos += d; apply(pos, true); mark(real(pos)); };
+  track.addEventListener("transitionend", e => { if (e.target === track) normalize(); });
+  bars.addEventListener("animationend", e => { if (e.animationName === "hfill") step(1); });
+
+  let sx = 0, sy = 0, dx = 0, w = 0, down = false, lock = null, moved = false;
+  hero.addEventListener("pointerdown", e => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    down = true; lock = null; moved = false; dx = 0;
+    sx = e.clientX; sy = e.clientY; w = hero.clientWidth;
+    bars.classList.add("paused");
+  });
+  hero.addEventListener("pointermove", e => {
+    if (!down) return;
+    const mx = e.clientX - sx, my = e.clientY - sy;
+    if (lock === null && Math.max(Math.abs(mx), Math.abs(my)) > 6) {
+      lock = Math.abs(mx) > Math.abs(my) ? "x" : "y";
+      if (lock === "x") { normalize(); hero.setPointerCapture(e.pointerId); }
+    }
+    if (lock !== "x") return;
+    moved = true; dx = mx;
+    track.style.transition = "none";
+    track.style.transform = `translateX(calc(${-pos * 100}% + ${dx}px))`;
+  });
+  const release = () => {
+    if (!down) return;
+    down = false;
+    bars.classList.remove("paused");
+    if (lock !== "x") return;
+    if (Math.abs(dx) > w * 0.16) step(dx < 0 ? 1 : -1);
+    else apply(pos, true);
+  };
+  hero.addEventListener("pointerup", release);
+  hero.addEventListener("pointercancel", release);
+  hero.addEventListener("click", e => {
+    if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+  }, true);
+  hero.addEventListener("click", e => {
+    if (e.target.closest(".play")) return;
+    const s = e.target.closest(".hslide");
+    if (s) go(s.dataset.k);
+  });
+
+  apply(pos, false);
+  mark(0);
+}
+
 function buildHome() {
-  const h = BY(HERO);
-  $("#hero").innerHTML =
-    `<div class="bg" style="${bg(h)}"></div><div class="scrim"></div>
-     <div class="mark">M I N J U N E — F I L M</div>
-     <div class="cap">
-       <h1>${esc(h.ko)}</h1>
-       <div class="meta"><span>${esc(h.format)}</span><span style="opacity:.5">·</span><span>${h.year}</span><span style="opacity:.5">·</span><span>${short(h.method)}</span></div>
-       <a class="play" href="${h.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ 재생</a>
-     </div>`;
-  $("#hero").onclick = () => go(HERO);
+  buildHero();
   $("#rows").innerHTML = ROWS.map(r =>
     `<div><div class="rowt" style="margin-bottom:11px">${esc(r.title)}</div><div class="hsc">` +
     r.keys.map((k, i) => {
@@ -230,7 +334,7 @@ function buildHome() {
       const cls = r.ranked ? (i + 1 > 9 ? "card rk rk2" : "card rk") : "card";
       const rank = r.ranked ? `<span class="rank">${i + 1}</span>` : "";
       return `<div class="${cls}" data-k="${c.key}">${rank}
-        <div class="poster" style="${bg(c)}">
+        <div class="poster" style="${pbg(c)}">
           <div class="tband"><span>${esc(c.ko)}</span></div>
         </div></div>`;
     }).join("") + `</div></div>`
@@ -263,7 +367,7 @@ function buildDetail(c) {
        <div style="display:flex;flex-direction:column;gap:11px;margin-top:6px">
          <span style="font-size:15px;font-weight:600">관련 작업</span>
          <div class="hsc" style="padding:0 0 4px">${rel.map(x =>
-           `<div class="card" data-k="${x.key}"><div class="poster" style="${bg(x)}">
+           `<div class="card" data-k="${x.key}"><div class="poster" style="${pbg(x)}">
               <div class="tband"><span>${esc(x.ko)}</span></div></div></div>`).join("")}</div>
        </div>
      </div>`;
